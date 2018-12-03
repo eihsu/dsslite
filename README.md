@@ -1,8 +1,8 @@
 # dsslite: Distributed Systems Simulator, Lite
 
-Simple deterministic distributed systems simulator for learning
-purposes.
+Simple deterministic distributed systems simulator for
+instructional purposes.
 
 For use in hands-on demonstrations with participants who have
-potentially no experience in Python, distributed systems, or
-programming in general.
+potentially no experience with Python, distributed systems, or
+computers in general.

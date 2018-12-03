@@ -23,6 +23,7 @@ class Request():
   containing one or more key/value pairs of user profile data to
   upsert for that user.
   """
+
   def __init__(self, key, value):
     self.user = key
     self.data = value
@@ -34,6 +35,7 @@ class Database():
   The store itself is a dictionary, as is the profile information
   itself.
   """
+
   def __init__(self):
     self.contents = {}
 
@@ -45,8 +47,7 @@ class Database():
       self.contents[user] = data
 
   def lookup(self, user):
-    # FIXTHIS error check
-    return self.contents[user]
+    return self.contents.get(user)
 
   def display(self, user):
     # Return format more nicely?
@@ -55,13 +56,17 @@ class Database():
   def dump(self):
     return self.contents
 
-class Worker():
+class Machine:
+  pass
+
+class Worker(Machine):
   """Worker instance for processing requests.
 
   Workers interface with a single database instance and
   receive (UPSERT) tasks directly from environment, or from
   load balancers.
   """
+
   count = 0
 
   def __init__(self, db):
@@ -76,7 +81,7 @@ class Worker():
     print self.name + " received request for user " + req.user
     self.db.upsert(req.user, req.data)
 
-class LoadBalancer():
+class LoadBalancer(Machine):
   """Load balancer for distributing requests over multiple workers.
 
   Default hashing function is to pick a machine uniformly at random,
@@ -85,17 +90,38 @@ class LoadBalancer():
   transparent with respect to logging, etc., to simplify and
   intensify the diagnostic process for users.
   """
-  def default_hash():
-    return 1  # FIXTHIS implement uniform random selection
+
+  @staticmethod
+  def default_hash_generator(pool_size):
+    return lambda x: random.randint(1, pool_size)
 
   def __init__(self, pool):
+    if len(pool) < 1:
+      raise ValueError(("Hey, LoadBalancer should be constructed with "
+                        "a list of one or more machines (either "
+                        "workers or more load balancers.)"))
     self.pool = pool
-    self.hash_function = default_hash
+    self.hash_function = LoadBalancer.default_hash_generator(len(pool))
+
+  def set_hash(self, fn):
+    self.hash_function = fn
 
   def handle_request(self, req):
     choice = self.hash_function(req.user)
-    # FIXTHIS sanity check choice against pool size.
-    machine = self.pool[choice]
+    if not isinstance(choice, (int, long)) or choice < 1:
+      raise ValueError("Hey, the hash function for " + req.user +
+                       " returned the value <{}> for".format(choice) +
+                       " user <" + req.user + ">, but it is" +
+                       " supposed to return its choice of machine" +
+                       " from its pool to handle the request, as an" +
+                       " integer.")
+    if choice > len(self.pool):
+      raise ValueError("Hey, the hash function for " + req.user +
+                       " chose machine # " + str(choice) +" for" +
+                       " user <" + req.user + ">, but" +
+                       " there are only " + str(len(self.pool)) + 
+                       " machines in its pool.")
+    machine = self.pool[choice - 1]
     machine.handle_request(req)
 
 class Simulation():
@@ -107,12 +133,19 @@ class Simulation():
   """
 
   def __init__(self, machine, random_seed=42):
+    if not isinstance(machine, Machine):
+      raise ValueError(("Hey, when creating a simulation, please "
+                        "provide a single machine (either a worker "
+                        "or a load balancer)."))
     self.edge = machine
     self.failuresP = False
     random.seed(random_seed)
 
   def set_failures(self, setting):
-    # FIXTHIS check for boolean.
+    if not isinstance(setting, bool):
+      raise ValueError(("Hey, when changing the simulator's setting "
+                        "for failures, please supply either True "
+                        "(on) or False (off)."))
     self.failuresP = setting
 
   def run(self, speed=1.0):

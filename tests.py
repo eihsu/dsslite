@@ -9,7 +9,7 @@ class MyRand:
   rands = [ ((i * 987) % 1000) / 1000.0 for i in range(0, 10000, 123) ]
   num_rands = len(rands)
 
-  def init(self, seed=42):
+  def __init__(self, seed=9963):
     self.seed(seed)
 
   def seed(self, seed):
@@ -224,30 +224,54 @@ def test_load_balancer():
 
 def test_simulation():
   db1 = Database()
+  db2 = Database()
   w1 = Worker(db1)
+  w2 = Worker(db2)
+  w3 = Worker(db1)
+  w4 = Worker(db2)
 
   # Invalid construction
   with pytest.raises(ValueError) as e:
     Simulation([w1])
 
-  # Invalid configuration.
+  # Invalid configuration for failures.
   s = Simulation(w1)
   with pytest.raises(ValueError) as e:
     s.set_failures("on")
 
+  # Check registration of components during sim construction.
+  lb2 = LoadBalancer([w3, w4, w1])
+  lb1 = LoadBalancer([w1, w2, lb2])
+  s = Simulation(lb1)
+  assert len(s.load_balancers) == 2
+  assert len(s.workers) == 4
+  assert len(s.databases) == 2
+  assert set(s.load_balancers) == set([lb1, lb2])
+  assert set(s.workers) == set([w1, w2, w3, w4])
+  assert set(s.databases) == set([db1, db2])
+  e = s.env
+  envs = [lb1.env, lb2.env,
+          w1.env, w2.env, w3.env, w4.env,
+          db1.env, db2.env]
+  assert envs == [e] * len(envs)
+
+def test_db_concurrency():
+  pass
 
 
 def test_worker_concurrency():
   pass
 
+def test_load_balancer_concurrency():
+  # load balancer modeled as instantaneous
+  pass
 
+def test_simulation_concurrency():
+  pass
 
 ################
 # SYSTEM TESTS #
 ################
-
-# Randomness controlled by providing pseudorandom generator with a
-# fixed seed (default argument to simulation constructor.
 
 def test_ex1():
   import examples.ex1_single_server as x

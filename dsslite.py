@@ -1,19 +1,16 @@
+import logging
 import random
-import time
+import simpy
 
 # Checking whether by mistake the user is running dss directly
 if __name__ == "__main__":
   print("eih-dss.py should not be called directly")
-  print("Read the README file for further details")
+  print("Check README file for usage information.")
   exit(1)
 
 
 MAX_INSTANCES = 100
 QUEUE_LIMIT_BEFORE_OVERFLOW_FAILURE = 50 # FIXTHIS
-
-# FIXTHIS capture Databases and Workers and Load Balancers in a global
-# var as they are created, in case it's useful to have a handle on
-# them later.
 
 class Request():
   """ Basic unit of traffic for simulation, a key/value pair.
@@ -37,14 +34,16 @@ class Database():
   """
 
   def __init__(self):
+    self.logger = logging.getLogger(__name__)
     self.contents = {}
 
   def upsert(self, user, data):
-    print "Upserting {} with {}".format(user, data)
+    #yield env.timeout(TIMECOST_DB) # STARTHERE
     if user in self.contents:
       self.contents[user].update(data)
     else:
       self.contents[user] = data
+    self.logger.info("Upserted {} with {}".format(user, data))
 
   def lookup(self, user):
     return self.contents.get(user)
@@ -70,6 +69,7 @@ class Worker(Machine):
   count = 0
 
   def __init__(self, db):
+    self.logger = logging.getLogger(__name__)
     self.db = db
     self.queue = []
     self.freep = True
@@ -78,7 +78,7 @@ class Worker(Machine):
     self.name = "WORKER #" + str(self.id)
 
   def handle_request(self, req):
-    print self.name + " received request for user " + req.user
+    self.logger.info(self.name + " received request for user " + req.user)
     self.db.upsert(req.user, req.data)
 
 class LoadBalancer(Machine):
@@ -92,16 +92,17 @@ class LoadBalancer(Machine):
   """
 
   @staticmethod
-  def default_hash_generator(pool_size):
+  def default_hash_factory(pool_size):
     return lambda x: random.randint(1, pool_size)
 
   def __init__(self, pool):
+    self.logger = logging.getLogger(__name__)
     if len(pool) < 1:
       raise ValueError(("Hey, LoadBalancer should be constructed with "
                         "a list of one or more machines (either "
                         "workers or more load balancers.)"))
     self.pool = pool
-    self.hash_function = LoadBalancer.default_hash_generator(len(pool))
+    self.hash_function = LoadBalancer.default_hash_factory(len(pool))
 
   def set_hash(self, fn):
     self.hash_function = fn
@@ -124,6 +125,20 @@ class LoadBalancer(Machine):
     machine = self.pool[choice - 1]
     machine.handle_request(req)
 
+class SimFilter(logging.Filter):
+  """
+  Inject information from the simulation (the simulated timestamp)
+  into log messages.  Philosophically, the logger is not really the
+  log of the dsslite distributed system simulator, so much as the
+  logger of the system created by the dsslite user for simulation.
+  """
+  def __init__(self, env):
+    self.env = env  # pysim env for retrieving simulation timestamps
+
+  def filter(self, record):
+    record.stime = self.env.now
+    return True
+
 class Simulation():
   """Engine for running a simulation.
 
@@ -133,6 +148,7 @@ class Simulation():
   """
 
   def __init__(self, machine, random_seed=42):
+    self.logger = logging.getLogger(__name__)
     if not isinstance(machine, Machine):
       raise ValueError(("Hey, when creating a simulation, please "
                         "provide a single machine (either a worker "
@@ -140,6 +156,61 @@ class Simulation():
     self.edge = machine
     self.failuresP = False
     random.seed(random_seed)
+    
+    # Create pysim environment and register it with all the
+    # workers, databases, and load balancers in the system; have to do
+    # it the hard way (post-construction) for convenience of users.
+    (self.env,
+     self.load_balancers,
+     self.workers,
+     self.databases) = self.register_components(machine)
+
+    self.configure_logger(self.env)
+
+  def configure_logger(self, env):
+    self.logger.setLevel(logging.DEBUG)
+
+    f = SimFilter(env)  # custom filter for adding simulation time
+    self.logger.addFilter(f)
+
+    formatter = logging.Formatter('[%(stime)5s ms] %(message)s')
+
+    # Log to stdout
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    ch.setFormatter(formatter)
+    self.logger.addHandler(ch)
+
+    # Log to file
+    fh = logging.FileHandler("test.log")
+    fh.setLevel(logging.DEBUG)
+    fh.setFormatter(formatter)
+    self.logger.addHandler(fh)
+
+  def register_components(self, machine):
+    env = simpy.Environment()
+    load_balancers = []
+    workers = []
+    databases = []
+    ms = [machine]
+    while ms:
+      m = ms.pop(0)  # lol python pop is expensive, I miss car/cdr!
+      if isinstance(m, Worker):
+        # Register worker and its database.
+        m.env = env
+        m.db.env = env
+        workers.append(m)
+        databases.append(m.db)
+      if isinstance(m, LoadBalancer):
+        # Register load balancer; enqueue its pool for processing.
+        m.env = env
+        load_balancers.append(m)
+        ms.extend(m.pool)
+    # Eliminate duplicates in registration lists.
+    workers = list(set(workers))
+    databases = list(set(databases))
+
+    return (env, load_balancers, workers, databases)
 
   def set_failures(self, setting):
     if not isinstance(setting, bool):
@@ -148,9 +219,29 @@ class Simulation():
                         "(on) or False (off)."))
     self.failuresP = setting
 
-  def run(self, speed=1.0):
+  def traffic_generator(self, speed):
     for req in Simulation.requests:
+      # Uniformly 1 to 100 ms between requests, scaled by speed.
+      interval = int(random.randint(1,100) * speed)
+      yield self.env.timeout(interval)
+      self.logger.info("New request: {}".format(req))
       self.edge.handle_request(Request(req[0],req[1]))
+
+  def run(self, speed=1.0):
+    p = self.env.process(self.traffic_generator(speed))
+    self.env.run(until=p)
+
+# x insert spacing between requests
+# generate fake data, add spikes
+# x add logging
+# actual (real-time) delay so feels like sim is running
+#
+# database transactions take <d> time, everything else instantaneous
+# worker requests instantaneous to receive, transactions cost <q>
+#   to enqueue, and <q> to dequeue, <p> to process (plus db wait time).
+# load balancer instantaneous
+# x random variation: gaps between requests
+
 
   requests = [
     ("apple", {"name": "apple person", "dob": "2015-06-01"}),

@@ -9,8 +9,20 @@ if __name__ == "__main__":
   exit(1)
 
 
+# Max number of any component type (worker, db, lb) in any system.
 MAX_INSTANCES = 100
-QUEUE_LIMIT_BEFORE_OVERFLOW_FAILURE = 50 # FIXTHIS
+
+# Max simultaneous connections a database can process before blocking.
+DB_CONCURRENCY = 2
+
+# Size of worker's queue's, entire system fails with overflow.
+WORKER_QUEUE_SIZE = 50
+
+
+# Time to dequeue and set up context.  (Currently, not really distinct
+# from general processing time cost.)
+TIMECOST_QUEUE = 10
+
 
 class Request():
   """ Basic unit of traffic for simulation, a key/value pair.
@@ -21,9 +33,10 @@ class Request():
   upsert for that user.
   """
 
-  def __init__(self, key, value):
+  def __init__(self, key, value, time=0):
     self.user = key
     self.data = value
+    self.time = time
 
 class Database():
   """ Database (full or just a simplified shard). 
@@ -38,18 +51,21 @@ class Database():
     self.contents = {}
 
   def upsert(self, user, data):
-    #yield env.timeout(TIMECOST_DB) # STARTHERE
     if user in self.contents:
       self.contents[user].update(data)
     else:
       self.contents[user] = data
+    # STARTHERE Identify Self.
     self.logger.info("Upserted {} with {}".format(user, data))
+
+  def register(self, env):
+    self.driver = simpy.Resource(env, capacity=DB_CONCURRENCY)
 
   def lookup(self, user):
     return self.contents.get(user)
 
   def display(self, user):
-    # Return format more nicely?
+    # FIXTHIS Return format more nicely?
     return self.lookup(user)
 
   def dump(self):
@@ -65,21 +81,51 @@ class Worker(Machine):
   receive (UPSERT) tasks directly from environment, or from
   load balancers.
   """
-
   count = 0
 
   def __init__(self, db):
     self.logger = logging.getLogger(__name__)
     self.db = db
     self.queue = []
-    self.freep = True
     Worker.count += 1
     self.id = Worker.count
     self.name = "WORKER #" + str(self.id)
 
-  def handle_request(self, req):
-    self.logger.info(self.name + " received request for user " + req.user)
+  def receive_request(self, req):
+    self.logger.info(self.name + " received request for user " + 
+                     req.user)
+    if len(self.queue) >= WORKER_QUEUE_SIZE:
+      raise RuntimeError("Hey, " + self.name + " built up a " +
+                         "backlog of messages to process, " +
+                         "exceeding the limit of " +
+                         str(WORKER_QUEUE_SIZE) + ".  Please " +
+                         "add more workers, or improve the " +
+                         "balance between existing workers, or " +
+                         "slow down the simulation speed.")
+    self.queue.append(req)
+
+  def process_request(self, env, req):
+    self.logger.info(self.name + " processing request for user " + 
+                     req.user + " from time " + str(req.time))
     self.db.upsert(req.user, req.data)
+
+  # STARTHERE: I think, we can't just use a queue, but have to use a
+  # simpy.Store (can we configure to act similarly to queue we had,
+  # in terms of overflow etc?)  See example on:
+  # https://simpy.readthedocs.io/en/latest/examples/process_communication.html
+  def consume(self, env):
+    # Keep consuming from the queue of requests.
+    while True:
+      if self.queue:
+        # Whenever we find a request on the queue, wait for dequeue,
+        # then wait for processing.
+        self.logger.info("HELLOHELLO")
+        yield env.timeout(TIMECOST_QUEUE)
+        req = self.queue.pop(0)
+        yield env.process(self.process_request(env, req))
+
+  def activate(self, env):
+    self.consumer = env.process(self.consume(env))
 
 class LoadBalancer(Machine):
   """Load balancer for distributing requests over multiple workers.
@@ -87,7 +133,7 @@ class LoadBalancer(Machine):
   Default hashing function is to pick a machine uniformly at random,
   but user can call set_hash(<fn>) to provide their own.
   Stylistially, load balancers are designed to be silent and
-  transparent with respect to logging, etc., to simplify and
+  transparent with respect to runtime, logging,  etc., to simplify and
   intensify the diagnostic process for users.
   """
 
@@ -98,8 +144,8 @@ class LoadBalancer(Machine):
   def __init__(self, pool):
     self.logger = logging.getLogger(__name__)
     if len(pool) < 1:
-      raise ValueError(("Hey, LoadBalancer should be constructed with "
-                        "a list of one or more machines (either "
+      raise ValueError(("Hey, LoadBalancer should be constructed "
+                        "with a list of one or more machines (either "
                         "workers or more load balancers.)"))
     self.pool = pool
     self.hash_function = LoadBalancer.default_hash_factory(len(pool))
@@ -107,7 +153,7 @@ class LoadBalancer(Machine):
   def set_hash(self, fn):
     self.hash_function = fn
 
-  def handle_request(self, req):
+  def receive_request(self, req):
     choice = self.hash_function(req.user)
     if not isinstance(choice, (int, long)) or choice < 1:
       raise ValueError("Hey, the hash function for " + req.user +
@@ -123,7 +169,7 @@ class LoadBalancer(Machine):
                        " there are only " + str(len(self.pool)) + 
                        " machines in its pool.")
     machine = self.pool[choice - 1]
-    machine.handle_request(req)
+    machine.receive_request(req)
 
 class SimFilter(logging.Filter):
   """
@@ -193,22 +239,28 @@ class Simulation():
     workers = []
     databases = []
     ms = [machine]
+
+    # Traverse network, registering components.
     while ms:
       m = ms.pop(0)  # lol python pop is expensive, I miss car/cdr!
       if isinstance(m, Worker):
-        # Register worker and its database.
-        m.env = env
-        m.db.env = env
         workers.append(m)
         databases.append(m.db)
       if isinstance(m, LoadBalancer):
-        # Register load balancer; enqueue its pool for processing.
-        m.env = env
         load_balancers.append(m)
         ms.extend(m.pool)
+
     # Eliminate duplicates in registration lists.
     workers = list(set(workers))
     databases = list(set(databases))
+
+    # Kick off worker SimPy processes.
+    for w in workers:
+      w.activate(env)
+
+    # Register databases as SimPy resources.
+    for d in databases:
+      d.register(env)
 
     return (env, load_balancers, workers, databases)
 
@@ -225,16 +277,18 @@ class Simulation():
       interval = int(random.randint(1,100) * speed)
       yield self.env.timeout(interval)
       self.logger.info("New request: {}".format(req))
-      self.edge.handle_request(Request(req[0],req[1]))
+      self.edge.receive_request(Request(req[0],req[1],self.env.now))
 
   def run(self, speed=1.0):
     p = self.env.process(self.traffic_generator(speed))
-    self.env.run(until=p)
+    self.env.run(until=10)
 
 # x insert spacing between requests
 # generate fake data, add spikes
 # x add logging
 # actual (real-time) delay so feels like sim is running
+# improved db output to see complete profiles
+# enforce max instances
 #
 # database transactions take <d> time, everything else instantaneous
 # worker requests instantaneous to receive, transactions cost <q>
@@ -249,3 +303,28 @@ class Simulation():
     ("apple", {"name": "Apple Person", "dob": "2015-06-01"}),
     ("banana", {"country": "Canada"})
   ]
+
+
+
+
+
+# STARTHERE
+# Worker is process that receives requests for processing, continuously enqueues, dequeues, 
+
+
+# Load balancer is instantaneous, transparent.
+
+# Database is a modeled as a resource.  You have to request its
+# driver, wait until it is free, do the write while doing your own
+# timeout process to simulate the write time and thus blocking all
+# others from using the database in the meantime, and then release
+# the resource.
+
+# Worker is continuous loop with actual queue.  Can it multi-thread in terms of timeout for starting/finishing a task, writing to db, and yet simultaneously receive new requests for its queue?  Let's say it can just do those two things and that's it.
+# So really worker is two processes; one is a listener and one is a request handling loop.  They share a queue for communication.
+
+
+# So only process is worker, which is really a pair of processes.
+# Database is just a resource and load balancer is instantaneous code
+# for choosing a worker.
+

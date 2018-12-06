@@ -1,3 +1,6 @@
+# TODO:
+# + Test overflowing worker queue.
+
 import dsslite
 from dsslite import *
 from mock import Mock
@@ -48,6 +51,27 @@ reqs = [req1, req2, req3, req4, req5, req6, req7, req8, req9]
 # UNIT TESTS #
 ##############
 
+def test_worker():
+  db1 = Database()
+  db2 = Database()
+
+  w1 = Worker(db1)
+  w2 = Worker(db1)
+  w3 = Worker(db2)
+
+  assert Worker.count == 3
+  assert [w1.id, w2.id, w3.id] == [1, 2, 3]
+
+  w1.receive_request(req1)
+  w2.receive_request(req2)
+  w3.receive_request(req3)
+  w1.receive_request(req4)
+  w2.receive_request(req5)
+  w3.receive_request(req6)
+  w1.receive_request(req7)
+  w2.receive_request(req8)
+  w3.receive_request(req9)
+
 def test_db():
   db1 = Database()
   db2 = Database()
@@ -79,8 +103,7 @@ def test_db():
                                     "full_name": "Halima Harb",
                                     "mmn": "Khoury" }
 
-
-def test_worker():
+def test_worker_and_db():
   db1 = Database()
   db2 = Database()
 
@@ -88,18 +111,20 @@ def test_worker():
   w2 = Worker(db1)
   w3 = Worker(db2)
 
-  assert Worker.count == 3
-  assert [w1.id, w2.id, w3.id] == [1, 2, 3]
+  w1.receive_request(req1)
+  w2.receive_request(req2)
+  w3.receive_request(req3)
+  w1.receive_request(req4)
+  w2.receive_request(req5)
+  w3.receive_request(req6)
+  w1.receive_request(req7)
+  w2.receive_request(req8)
+  w3.receive_request(req9)
 
-  w1.handle_request(req1)
-  w2.handle_request(req2)
-  w3.handle_request(req3)
-  w1.handle_request(req4)
-  w2.handle_request(req5)
-  w3.handle_request(req6)
-  w1.handle_request(req7)
-  w2.handle_request(req8)
-  w3.handle_request(req9)
+  # nothing actually routed, just collecting workers for sim.
+  lb = LoadBalancer([w1,w2,w3])
+  sim = Simulation(lb)
+  sim.run()
 
   # (coupled testing to db instead of mocks)
   assert db1.lookup("nannak") == { "dob": "1954-12-08" }
@@ -121,60 +146,61 @@ def test_worker():
   assert db1.lookup("nobody") == None
   assert db2.lookup("nobody") == None
 
+
 def test_load_balancer():
   db1 = Database()
   db2 = Database()
 
   w1 = Worker(db1)
-  w1.handle_request = Mock()
+  w1.receive_request = Mock()
   w2 = Worker(db1)
-  w2.handle_request = Mock()
+  w2.receive_request = Mock()
   w3 = Worker(db2)
-  w3.handle_request = Mock()
+  w3.receive_request = Mock()
 
   # Default (random) load balancer.
   lb1 = LoadBalancer([w1, w2, w3])
 
-  lb1.handle_request(req1)
-  w3.handle_request.assert_called_with(req1)
-  lb1.handle_request(req2)
-  w1.handle_request.assert_called_with(req2)
-  lb1.handle_request(req3)
-  w2.handle_request.assert_called_with(req3)
-  lb1.handle_request(req4)
-  w1.handle_request.assert_called_with(req4)
-  lb1.handle_request(req5)
-  w2.handle_request.assert_called_with(req5)
-  lb1.handle_request(req6)
-  w3.handle_request.assert_called_with(req6)
-  lb1.handle_request(req7)
-  w1.handle_request.assert_called_with(req7)
-  lb1.handle_request(req8)
-  w2.handle_request.assert_called_with(req8)
-  lb1.handle_request(req9)
-  w1.handle_request.assert_called_with(req9)
+  lb1.receive_request(req1)
+  w1.receive_request.assert_called_with(req1)
+  lb1.receive_request(req2)
+  w2.receive_request.assert_called_with(req2)
+  lb1.receive_request(req3)
+  w1.receive_request.assert_called_with(req3)
+  lb1.receive_request(req4)
+  w2.receive_request.assert_called_with(req4)
+  lb1.receive_request(req5)
+  w3.receive_request.assert_called_with(req5)
+  lb1.receive_request(req6)
+  w1.receive_request.assert_called_with(req6)
+  lb1.receive_request(req7)
+  w2.receive_request.assert_called_with(req7)
+  lb1.receive_request(req8)
+  w1.receive_request.assert_called_with(req8)
+  lb1.receive_request(req9)
+  w2.receive_request.assert_called_with(req9)
 
   # Default load balancer on different pool.
   lb2 = LoadBalancer([w1, w2])
 
-  lb2.handle_request(req1)
-  w1.handle_request.assert_called_with(req1)
-  lb2.handle_request(req2)
-  w2.handle_request.assert_called_with(req2)
-  lb2.handle_request(req3)
-  w1.handle_request.assert_called_with(req3)
-  lb2.handle_request(req4)
-  w2.handle_request.assert_called_with(req4)
-  lb2.handle_request(req5)
-  w1.handle_request.assert_called_with(req5)
-  lb2.handle_request(req6)
-  w1.handle_request.assert_called_with(req6)
-  lb2.handle_request(req7)
-  w2.handle_request.assert_called_with(req7)
-  lb2.handle_request(req8)
-  w1.handle_request.assert_called_with(req8)
-  lb2.handle_request(req9)
-  w2.handle_request.assert_called_with(req9)
+  lb2.receive_request(req1)
+  w2.receive_request.assert_called_with(req1)
+  lb2.receive_request(req2)
+  w1.receive_request.assert_called_with(req2)
+  lb2.receive_request(req3)
+  w2.receive_request.assert_called_with(req3)
+  lb2.receive_request(req4)
+  w1.receive_request.assert_called_with(req4)
+  lb2.receive_request(req5)
+  w1.receive_request.assert_called_with(req5)
+  lb2.receive_request(req6)
+  w2.receive_request.assert_called_with(req6)
+  lb2.receive_request(req7)
+  w1.receive_request.assert_called_with(req7)
+  lb2.receive_request(req8)
+  w2.receive_request.assert_called_with(req8)
+  lb2.receive_request(req9)
+  w1.receive_request.assert_called_with(req9)
 
   # Custom hash function.
   def alpha_hash(name):
@@ -187,36 +213,36 @@ def test_load_balancer():
   lb3 = LoadBalancer([w1, w2, w3])
   lb3.set_hash(alpha_hash)
 
-  lb3.handle_request(req1)
-  w2.handle_request.assert_called_with(req1)
-  lb3.handle_request(req2)
-  w1.handle_request.assert_called_with(req2)
-  lb3.handle_request(req3)
-  w3.handle_request.assert_called_with(req3)
-  lb3.handle_request(req4)
-  w1.handle_request.assert_called_with(req4)
-  lb3.handle_request(req5)
-  w2.handle_request.assert_called_with(req5)
-  lb3.handle_request(req6)
-  w2.handle_request.assert_called_with(req6)
-  lb3.handle_request(req7)
-  w2.handle_request.assert_called_with(req7)
-  lb3.handle_request(req8)
-  w1.handle_request.assert_called_with(req8)
-  lb3.handle_request(req9)
-  w1.handle_request.assert_called_with(req9)
+  lb3.receive_request(req1)
+  w2.receive_request.assert_called_with(req1)
+  lb3.receive_request(req2)
+  w1.receive_request.assert_called_with(req2)
+  lb3.receive_request(req3)
+  w3.receive_request.assert_called_with(req3)
+  lb3.receive_request(req4)
+  w1.receive_request.assert_called_with(req4)
+  lb3.receive_request(req5)
+  w2.receive_request.assert_called_with(req5)
+  lb3.receive_request(req6)
+  w2.receive_request.assert_called_with(req6)
+  lb3.receive_request(req7)
+  w2.receive_request.assert_called_with(req7)
+  lb3.receive_request(req8)
+  w1.receive_request.assert_called_with(req8)
+  lb3.receive_request(req9)
+  w1.receive_request.assert_called_with(req9)
 
   # Hash returns invalid choice.
   lb4 = LoadBalancer([w1])
   lb4.set_hash( lambda x: 2 )
   with pytest.raises(ValueError) as e:
-    lb4.handle_request(req1)
+    lb4.receive_request(req1)
   lb4.set_hash( lambda x: -1 )
   with pytest.raises(ValueError) as e:
-    lb4.handle_request(req1)
+    lb4.receive_request(req1)
   lb4.set_hash( lambda x: "apple")
   with pytest.raises(ValueError) as e:
-    lb4.handle_request(req1)
+    lb4.receive_request(req1)
 
   # Load balancer with empty pool.
   with pytest.raises(ValueError) as e:
@@ -249,11 +275,6 @@ def test_simulation():
   assert set(s.load_balancers) == set([lb1, lb2])
   assert set(s.workers) == set([w1, w2, w3, w4])
   assert set(s.databases) == set([db1, db2])
-  e = s.env
-  envs = [lb1.env, lb2.env,
-          w1.env, w2.env, w3.env, w4.env,
-          db1.env, db2.env]
-  assert envs == [e] * len(envs)
 
 def test_db_concurrency():
   pass

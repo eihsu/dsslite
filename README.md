@@ -32,11 +32,19 @@ This example and others are found in the `examples/` subdirectory.
 
 + Fancier text-based output.  (Prefer not to go with gui, so
 participants can get an arguably more authentic back-end experience,
-and to maintain ease of deployment.  Maybe plot out a static graph or
-something at the end, as a file.)
+and to maintain ease of deployment.)
+
++ Still not a UI, but maybe plot out a static graph at the end, as a
+file.
+
++ HTML page for viewing db contents at the end, so people can make the
+connection to the final product they see on for instance a social
+media feed.
 
 + More options for configuring time delays and simulation speed.  Tune
 options to accentuate desired observations as users progress through
 the examples.
+
++ Allow multi-processing on workers.
 
 + Live high score system where runtime results get posted to server.

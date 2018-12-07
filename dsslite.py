@@ -45,9 +45,13 @@ class Database():
   The store itself is a dictionary, as is the profile information
   itself.
   """
+  count = 0
 
   def __init__(self):
     self.logger = logging.getLogger(__name__)
+    Database.count += 1
+    self.id = Database.count
+    self.name = "DB #" + str(self.id)
     self.contents = {}
 
   def upsert(self, user, data):
@@ -55,8 +59,8 @@ class Database():
       self.contents[user].update(data)
     else:
       self.contents[user] = data
-    # STARTHERE Identify Self.
-    self.logger.info("Upserted {} with {}".format(user, data))
+    self.logger.info(self.name +
+                     " updated {} with {}".format(user, data))
 
   def register(self, env):
     self.driver = simpy.Resource(env, capacity=DB_CONCURRENCY)
@@ -86,45 +90,47 @@ class Worker(Machine):
   def __init__(self, db):
     self.logger = logging.getLogger(__name__)
     self.db = db
-    self.queue = []
+#   self.queue = []
     Worker.count += 1
     self.id = Worker.count
     self.name = "WORKER #" + str(self.id)
 
   def receive_request(self, req):
-    self.logger.info(self.name + " received request for user " + 
+    self.logger.info(self.name + " receives request for user " + 
                      req.user)
-    if len(self.queue) >= WORKER_QUEUE_SIZE:
-      raise RuntimeError("Hey, " + self.name + " built up a " +
-                         "backlog of messages to process, " +
-                         "exceeding the limit of " +
-                         str(WORKER_QUEUE_SIZE) + ".  Please " +
-                         "add more workers, or improve the " +
-                         "balance between existing workers, or " +
-                         "slow down the simulation speed.")
-    self.queue.append(req)
+    self.queue.put(req)
+#    if len(self.queue) >= WORKER_QUEUE_SIZE:
+#      raise RuntimeError("Hey, " + self.name + " built up a " +
+#                         "backlog of messages to process, " +
+#                         "exceeding the limit of " +
+#                         str(WORKER_QUEUE_SIZE) + ".  Please " +
+#                         "add more workers, or improve the " +
+#                         "balance between existing workers, or " +
+#                         "slow down the simulation speed.")
+#    self.queue.append(req)
 
   def process_request(self, env, req):
     self.logger.info(self.name + " processing request for user " + 
                      req.user + " from time " + str(req.time))
     self.db.upsert(req.user, req.data)
+    env.exit(True)
 
-  # STARTHERE: I think, we can't just use a queue, but have to use a
-  # simpy.Store (can we configure to act similarly to queue we had,
-  # in terms of overflow etc?)  See example on:
-  # https://simpy.readthedocs.io/en/latest/examples/process_communication.html
   def consume(self, env):
     # Keep consuming from the queue of requests.
     while True:
-      if self.queue:
-        # Whenever we find a request on the queue, wait for dequeue,
-        # then wait for processing.
-        self.logger.info("HELLOHELLO")
-        yield env.timeout(TIMECOST_QUEUE)
-        req = self.queue.pop(0)
-        yield env.process(self.process_request(env, req))
+      req = yield self.queue.get()
+      # Whenever we pull a request from the queue, wait for
+      # dequeue, then wait for processing.
+      yield env.timeout(TIMECOST_QUEUE)
+      yield env.process(self.process_request(env, req))
+
 
   def activate(self, env):
+    # STARTHERE: Add capacity limit, test by adding extra slowdown to
+    # process_request.  Then work on actual process_request and db.
+
+
+    self.queue = simpy.Store(env, capacity=1)
     self.consumer = env.process(self.consume(env))
 
 class LoadBalancer(Machine):
@@ -227,8 +233,8 @@ class Simulation():
     ch.setFormatter(formatter)
     self.logger.addHandler(ch)
 
-    # Log to file
-    fh = logging.FileHandler("test.log")
+    # Log to file (mode 'w' overwrites, default of 'a' appends.)
+    fh = logging.FileHandler("test.log", mode='w')
     fh.setLevel(logging.DEBUG)
     fh.setFormatter(formatter)
     self.logger.addHandler(fh)
@@ -281,7 +287,7 @@ class Simulation():
 
   def run(self, speed=1.0):
     p = self.env.process(self.traffic_generator(speed))
-    self.env.run(until=10)
+    self.env.run(until=p)
 
 # x insert spacing between requests
 # generate fake data, add spikes

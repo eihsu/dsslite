@@ -14,5 +14,5 @@ w5 = Worker(db5)
 
 lb = LoadBalancer([w1,w2,w3,w4,w5])
 
-sim = Simulation(lb)
+sim = Simulation(lb, sim_speed=0)
 sim.run()

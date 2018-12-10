@@ -49,6 +49,6 @@ lb = LoadBalancer([[w1,w6],
                    [w4,w9],
                    [w5,w10]])
 
-sim = Simulation(lb)
+sim = Simulation(lb, sim_speed=0)
 sim.set_failures(True)
 sim.run()

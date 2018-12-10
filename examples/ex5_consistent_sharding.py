@@ -37,5 +37,5 @@ def simple_hash(name):
 
 lb.set_hash(simple_hash)
 
-sim = Simulation(lb)
+sim = Simulation(lb, sim_speed=0)
 sim.run()

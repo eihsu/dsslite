@@ -37,5 +37,5 @@ def alpha_hash(name):
 
 lb.set_hash(alpha_hash)
 
-sim = Simulation(lb)
+sim = Simulation(lb, sim_speed=0)
 sim.run()

@@ -116,39 +116,66 @@ class Database():
       print(" " * (pad_to - len(key)) + key + " : " + data[key])
     print("=" * len(header))
 
+  def write_html(self, user=None):
+    head = ""
+    body = ""
 
-  def write_as_html(self, user):
-    data = self.lookup(user)
-    if data is None:
-      print("Sorry, user {} not found in db.".format(user))
-      return
+    # Create html doc for single user if one provided; otherwise do
+    # entire db.
+    if user:
+      filename = user + ".html"
+      users = [user]
+      if not user in self.contents:
+        print("Sorry, user {} not found in db.".format(user))
+        return
+    else:
+      filename = "all.html"
+      users = self.contents.keys()
 
-    # Data is dictionary of user attribute names and values
-    data_html = ""
-    if "name" in data:
+    # Style default <hr> to potentially separate user profiles.
+    head += "<style>hr { border-width: 4px; "
+    head += "border-style: solid; }</style>"
+
+    # Process either single user or entire contents of db.
+    for user in users:
+
+      # Data is dictionary of user attribute names and values.
+      data = self.lookup(user)
+
       # Show user's name first, as large heading, if available.
-      data_html += "<h1>" + data["name"] + "</h1>\n"
-    # Show username as secondary heading.
-    data_html += "<h2>Username: [{}]</h2>".format(user)
-    # Show rest of attributes in pairs.
-    for key in data:
-      if key == "name":
-        continue
-      data_html += "<p><b>{}</b>:  {}</p>\n".format(key.upper(), data[key])
+      body += "\n          <hr>\n"
+      if "name" in data:
+        body += "          <h1>" + data["name"] + "</h1>\n"
 
-    output = """
-      <!DOCTYPE html>
+      # Show username as secondary heading.
+      # (Colored <hr> takes user's favorite color if available.)
+      c = data["color"] if "color" in data else "#999999"
+      body += "          "
+      body += "<hr style=\"color: {}; border-width: 2px;\">\n".format(c)
+      body += "          <h2>Username: [{}]</h2>\n".format(user)
+      body += "          "
+      body += "<hr style=\"color: {}; border-width: 2px;\">\n".format(c)
+
+      # Show rest of attributes in pairs.
+      for key in data:
+        if key == "name":
+          continue
+        body += "          "
+        body += "<p><b>{}</b>:  {}</p>\n".format(key.upper(), data[key])
+      
+      body += "          <br>\n"
+
+    output = """      <!DOCTYPE html>
       <html>
         <head>
           <title>User: {}</title>
+          {}
         </head>
         <body>
-          {}
-        </body>
+          {}        </body>
       </html>
-      """.format(user, data_html)
+      """.format(user, head, body)
 
-    filename = user + ".html"
     with open(filename, "w") as f:
       f.write(output)
 
@@ -479,11 +506,11 @@ class Simulation():
     s += "Processed {} of {} requests in {} seconds.\n".format(
       stats["num_reqs"] - stats["num_failed"],
       stats["num_reqs"], stats["sim_time"] / 1000.0)
-    s += "Min/Max/Mean/Median response time: "
+    s += "Min/Max/Median/Mean response time: "
     s += "[ {} / {} / {} / {} ] ms.\n".format(stats["min_wait"],
                                               stats["max_wait"],
-                                              stats["mean_wait"],
-                                              stats["median_wait"])
+                                              stats["median_wait"],
+                                              stats["mean_wait"])
     # STARTHERE Report traffic rate, and TPS (with caveat).
     print(s)
 
@@ -518,12 +545,13 @@ class Simulation():
     stats = self.generate_stats(self.env.now)
     self.display_stats(stats)
 
-# show stats for simulation
 # generate fake data, add spikes
-# x enforce max instances
 # test for max instances
 # tests for worker concurrency (for instance straight to handling vs queue)
 # test for stats
+# x show stats for simulation
+# x html output for one or all users
+# x enforce max instances
 # x visualize load on queue
 # x insert spacing between requests
 # x add logging
@@ -543,7 +571,8 @@ class Simulation():
     ("apple", {"name": "apple person", "dob": "2015-06-01"}),
     ("banana", {"name": "Banana Person", "dob": "2012-11-10"}),
     ("apple", {"name": "Apple Person", "dob": "2015-06-01"}),
-    ("banana", {"country": "Canada"})
+    ("banana", {"country": "Canada"}),
+    ("apple", {"color": "aqua"}),
   ]
 
 

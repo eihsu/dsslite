@@ -28,10 +28,10 @@ class MyRand:
     n = max - min + 1
     return int(min + int(self.random() * n))
 
-mr1 = MyRand()
-dsslite.random.random = mr1.random
-mr2 = MyRand()
-dsslite.random.randint = mr2.randint
+mr = MyRand()
+dsslite.random.random = mr.random
+dsslite.random.randint = mr.randint
+dsslite.random.seed = mr.seed
 
 #############
 # TEST DATA #
@@ -215,16 +215,26 @@ def test_simulation():
   with pytest.raises(ValueError) as e:
     s.set_outages("on")
 
-  # Check registration of components during sim construction.
+  # Check registration of components during sim initialization.
   lb2 = LoadBalancer([w3, w4, w1])
   lb1 = LoadBalancer([w1, w2, lb2])
   s = Simulation(lb1)
+  s.initialize()
   assert len(s.load_balancers) == 2
   assert len(s.workers) == 4
   assert len(s.databases) == 2
   assert set(s.load_balancers) == set([lb1, lb2])
   assert set(s.workers) == set([w1, w2, w3, w4])
   assert set(s.databases) == set([db1, db2])
+
+  # Check limit on components
+  temp = dsslite.MAX_INSTANCES
+  dsslite.MAX_INSTANCES = 4
+  s = Simulation(lb1)
+  with pytest.raises(RuntimeError) as e:
+    dsslite.MAX_INSTANCES = 3
+    s = Simulation(lb1)
+  dsslite.MAX_INSTANCES = temp
 
 def test_system():
   db1 = Database()
@@ -236,7 +246,7 @@ def test_system():
 
   lb = LoadBalancer([w1,w2,w3])
   sim = Simulation(lb, sim_speed=0)
-  sim.run(script=test_script)
+  sim.run(script=test_script, traffic_rate=1.0)
 
   # (coupled testing to db instead of mocks)
   assert db1.lookup("nannak") == { "dob": "1954-12-08" }
@@ -245,18 +255,54 @@ def test_system():
   assert db2.lookup("celinat") == None
   assert db1.lookup("stanislavy") == { "dob": "1979-01-12" }
   assert db2.lookup("stanislavy") == None
-  assert db1.lookup("archers") == None
-  assert db2.lookup("archers") == { "dob": "1975-08-30" }
+  assert db1.lookup("archers") == { "dob": "1975-08-30" }
+  assert db2.lookup("archers") == None
   assert db1.lookup("isabellem") == None
   assert db2.lookup("isabellem") == { "dob": "1961-06-26" }
   assert db1.lookup("maey") == { "dob": "1988-03-01" }
   assert db2.lookup("maey") == None
   assert db1.lookup("jakobk") == { "dob": "1999-07-07" }
   assert db2.lookup("jakobk") == None
-  assert db1.lookup("halimah") == { "dob": "1954-12-08" }
-  assert db2.lookup("halimah") == { "dob": "1900-01-01" }
+  assert db1.lookup("halimah") == { "dob": "1900-01-01" }
+  assert db2.lookup("halimah") == None
   assert db1.lookup("nobody") == None
   assert db2.lookup("nobody") == None
+
+  # Test stats.
+  stats = sim.generate_stats()
+  assert stats['sim_time'] == 450
+  assert stats['tps'] == pytest.approx(21.95, 0.01)
+  assert stats['num_reqs'] == 9
+  assert stats['num_failed'] == 0
+  assert stats['min_wait'] == 40
+  assert stats['max_wait'] == 75
+  assert stats['median_wait'] == 40
+  assert stats['mean_wait'] == pytest.approx(47.67, 0.01)
+
+  # Test sim reset and traffic rate, plus stats again.
+  sim.run(script=test_script, traffic_rate = 2.0)
+  stats = sim.generate_stats()
+  assert stats['sim_time'] == 250
+  assert stats['tps'] == pytest.approx(44.33, 0.01)
+  assert stats['num_reqs'] == 9
+  assert stats['num_failed'] == 0
+  assert stats['min_wait'] == 40
+  assert stats['max_wait'] == 78
+  assert stats['median_wait'] == 40
+  assert stats['mean_wait'] == pytest.approx(50.00, 0.01)
+
+  # Test sim reproducability
+  sim.run(script=test_script, traffic_rate = 1.0)
+  stats = sim.generate_stats()
+  assert stats['sim_time'] == 450
+  assert stats['tps'] == pytest.approx(21.95, 0.01)
+  assert stats['num_reqs'] == 9
+  assert stats['num_failed'] == 0
+  assert stats['min_wait'] == 40
+  assert stats['max_wait'] == 75
+  assert stats['median_wait'] == 40
+  assert stats['mean_wait'] == pytest.approx(47.67, 0.01)
+
 
 def test_worker_concurrency():
   # Queue overflow by dumping 9 times allowable number of requests,
@@ -267,7 +313,11 @@ def test_worker_concurrency():
   sim = Simulation(w, sim_speed=0)
   with pytest.raises(RuntimeError) as e:
     sim.run(script=test_script * max,
-            traffic_rate=0)  # no time between requests
+            traffic_rate=1000000)  # basically no time between requests
+
+  # STARTHERE make request(s) go straight onto idle worker,
+  # versus a bunch that make it busy and use its queue, check
+  # that queue actually contains something.
 
 def test_db_concurrency():
   
@@ -283,5 +333,3 @@ def test_db_concurrency():
 
 def test_ex1():
   import examples.ex1_single_server as x
-  assert x.db.lookup("apple") == {
-    'dob': '2015-06-01', 'name': 'Apple Person'}

@@ -1,0 +1,1563 @@
+[
+{
+  'city' : 'East Jill, Ontario',
+  'name' : 'Danielle Johnson',
+  'color' : 'aqua',
+  'project' : 'Managed 4Thgeneration Conglomeration',
+  'dob' : '04/23/1972',
+  'job' : 'Audiological Scientist',
+  'user' : 'daniellej'
+},
+
+{
+  'city' : 'Amyberg, Nunavut',
+  'name' : 'Anthony Gonzalez',
+  'color' : 'fuchsia',
+  'project' : 'Self-Enabling Neutral Focus Group',
+  'dob' : '07/08/1948',
+  'job' : 'Accountant, Chartered Management',
+  'user' : 'anthonyg'
+},
+
+{
+  'city' : 'North Melaniestad, Quebec',
+  'name' : 'Susan Rogers',
+  'color' : 'gray',
+  'project' : 'Virtual Exuding Knowledge User',
+  'dob' : '05/06/1994',
+  'job' : 'Lecturer, Higher Education',
+  'user' : 'susanr'
+},
+
+{
+  'city' : 'Janettown, New Brunswick',
+  'name' : 'Christine Hensley',
+  'color' : 'olive',
+  'project' : 'Enterprise-Wide Attitude-Oriented Definition',
+  'dob' : '03/04/1981',
+  'job' : 'Artist',
+  'user' : 'christineh'
+},
+
+{
+  'city' : 'East Sharonfurt, Nunavut',
+  'name' : 'Michael Wood',
+  'color' : 'green',
+  'project' : 'De-Engineered Exuding Website',
+  'dob' : '06/19/1981',
+  'job' : 'Programme Researcher, Broadcasting/Film/Video',
+  'user' : 'michaelw'
+},
+
+{
+  'city' : 'Parsonsberg, Alberta',
+  'name' : 'Angela Cohen',
+  'color' : 'olive',
+  'project' : 'Down-Sized Value-Added Structure',
+  'dob' : '05/06/1959',
+  'job' : 'Diplomatic Services Operational Officer',
+  'user' : 'angelac'
+},
+
+{
+  'city' : 'Ellisburgh, New Brunswick',
+  'name' : 'Diana Foster',
+  'color' : 'blue',
+  'project' : 'Persevering Tertiary Graphic Interface',
+  'dob' : '11/10/1952',
+  'job' : 'Development Worker, Community',
+  'user' : 'dianaf'
+},
+
+{
+  'city' : 'North Danielstad, Quebec',
+  'name' : 'Whitney Hicks',
+  'color' : 'teal',
+  'project' : 'Innovative Zero Tolerance Internet Solution',
+  'dob' : '12/24/2003',
+  'job' : 'Archaeologist',
+  'user' : 'whitneyh'
+},
+
+{
+  'city' : 'Erinmouth, New Brunswick',
+  'name' : 'Michelle Smith',
+  'color' : 'silver',
+  'project' : 'Mandatory Heuristic Time-Frame',
+  'dob' : '07/03/1997',
+  'job' : 'Building Control Surveyor',
+  'user' : 'michelles'
+},
+
+{
+  'city' : 'Port Monicaburgh, Nunavut',
+  'name' : 'Jose Mason',
+  'color' : 'silver',
+  'project' : 'Right-Sized Interactive Product',
+  'dob' : '01/04/1974',
+  'job' : 'Chief Of Staff',
+  'user' : 'josem'
+},
+
+{
+  'city' : 'Port Natashafort, Newfoundland and Labrador',
+  'name' : 'Aaron Nguyen',
+  'color' : 'black',
+  'project' : 'User-Centric Asymmetric Infrastructure',
+  'dob' : '08/27/1942',
+  'job' : 'Sports Therapist',
+  'user' : 'aaronn'
+},
+
+{
+  'city' : 'South Andreaburgh, Saskatchewan',
+  'name' : 'Kathleen Cannon',
+  'color' : 'teal',
+  'project' : 'Operative Object-Oriented Complexity',
+  'dob' : '02/22/1959',
+  'job' : 'Consulting Civil Engineer',
+  'user' : 'kathleenc'
+},
+
+{
+  'city' : 'South David, New Brunswick',
+  'name' : 'Wanda Santos',
+  'color' : 'purple',
+  'project' : 'Enterprise-Wide Context-Sensitive Approach',
+  'dob' : '11/10/1980',
+  'job' : 'Medical Technical Officer',
+  'user' : 'wandas'
+},
+
+{
+  'city' : 'Jonesberg, Ontario',
+  'name' : 'Jeremy Whitehead',
+  'color' : 'navy',
+  'project' : 'Upgradable Local Info-Mediaries',
+  'dob' : '04/20/1991',
+  'job' : 'Charity Fundraiser',
+  'user' : 'jeremyw'
+},
+
+{
+  'city' : 'South Rodneyview, Prince Edward Island',
+  'name' : 'Lindsey Lee',
+  'color' : 'gray',
+  'project' : 'Compatible Foreground Focus Group',
+  'dob' : '07/16/1996',
+  'job' : 'Visual Merchandiser',
+  'user' : 'lindseyl'
+},
+
+{
+  'city' : 'West Joshua, New Brunswick',
+  'name' : 'John Lee',
+  'color' : 'aqua',
+  'project' : 'Synergistic Intermediate Analyzer',
+  'dob' : '11/24/2005',
+  'job' : 'Health And Safety Inspector',
+  'user' : 'johnl'
+},
+
+{
+  'city' : 'Allisonville, New Brunswick',
+  'name' : 'Mary Novak',
+  'color' : 'navy',
+  'project' : 'Balanced Exuding Website',
+  'dob' : '12/24/1955',
+  'job' : 'Fitness Centre Manager',
+  'user' : 'maryn'
+},
+
+{
+  'city' : 'Port Wendy, Nova Scotia',
+  'name' : 'Kristen Gibson',
+  'color' : 'gray',
+  'project' : 'Focused Well-Modulated Leverage',
+  'dob' : '10/25/1974',
+  'job' : 'Chief Operating Officer',
+  'user' : 'kristeng'
+},
+
+{
+  'city' : 'Wesleyhaven, Manitoba',
+  'name' : 'Julie Brown',
+  'color' : 'white',
+  'project' : 'Digitized Methodical Neural-Net',
+  'dob' : '12/09/1953',
+  'job' : 'Arts Administrator',
+  'user' : 'julieb'
+},
+
+{
+  'city' : 'New Christinebury, Nunavut',
+  'name' : 'David Zamora',
+  'color' : 'lime',
+  'project' : 'Diverse Non-Volatile Core',
+  'dob' : '11/10/1964',
+  'job' : 'Television Production Assistant',
+  'user' : 'davidz'
+},
+
+{
+  'city' : 'Lake Charles, New Brunswick',
+  'name' : 'Emily Evans',
+  'color' : 'white',
+  'project' : 'Centralized Composite Data-Warehouse',
+  'dob' : '05/29/2001',
+  'job' : 'Wellsite Geologist',
+  'user' : 'emilye'
+},
+
+{
+  'city' : 'East Martha, Ontario',
+  'name' : 'Nicole Suarez',
+  'color' : 'silver',
+  'project' : 'Profound 24Hour Protocol',
+  'dob' : '04/21/1958',
+  'job' : 'Warden/Ranger',
+  'user' : 'nicoles'
+},
+
+{
+  'city' : 'North Danielmouth, New Brunswick',
+  'name' : 'Elizabeth Mcmillan',
+  'color' : 'silver',
+  'project' : 'Diverse Motivating Data-Warehouse',
+  'dob' : '03/02/1971',
+  'job' : 'Product/Process Development Scientist',
+  'user' : 'elizabethm'
+},
+
+{
+  'city' : 'West Joshuatown, Prince Edward Island',
+  'name' : 'Rebecca Mathis',
+  'color' : 'silver',
+  'project' : 'Reduced Intermediate Hardware',
+  'dob' : '08/09/1938',
+  'job' : 'Development Worker, Community',
+  'user' : 'rebeccam'
+},
+
+{
+  'city' : 'Gardnerfort, Nunavut',
+  'name' : 'Charles Ware',
+  'color' : 'green',
+  'project' : 'Front-Line Tertiary Project',
+  'dob' : '06/22/1996',
+  'job' : 'Cartographer',
+  'user' : 'charlesw'
+},
+
+{
+  'city' : 'North Kimberlyhaven, Northwest Territories',
+  'name' : 'Rachel Clark',
+  'color' : 'silver',
+  'project' : 'Up-Sized Systemic Utilization',
+  'dob' : '01/29/1993',
+  'job' : 'Chief Operating Officer',
+  'user' : 'rachelc'
+},
+
+{
+  'city' : 'Martinside, Quebec',
+  'name' : 'Nicole Johnson',
+  'color' : 'fuchsia',
+  'project' : 'Expanded Regional Array',
+  'dob' : '04/03/1997',
+  'job' : 'Risk Manager',
+  'user' : 'nicolej'
+},
+
+{
+  'city' : 'Stevensburgh, Quebec',
+  'name' : 'Michele Walker',
+  'color' : 'navy',
+  'project' : 'Distributed Empowering Standardization',
+  'dob' : '09/11/2003',
+  'job' : 'Administrator, Local Government',
+  'user' : 'michelew'
+},
+
+{
+  'city' : 'Port Amanda, Yukon Territory',
+  'name' : 'Joshua May',
+  'color' : 'maroon',
+  'project' : 'Devolved Well-Modulated Data-Warehouse',
+  'dob' : '04/26/1945',
+  'job' : 'Trading Standards Officer',
+  'user' : 'joshuam'
+},
+
+{
+  'city' : 'New William, Northwest Territories',
+  'name' : 'Ryan Chandler',
+  'color' : 'blue',
+  'project' : 'Reactive 24Hour System Engine',
+  'dob' : '07/24/1974',
+  'job' : 'Designer, Interior/Spatial',
+  'user' : 'ryanc'
+},
+
+{
+  'city' : 'Michaelton, Ontario',
+  'name' : 'Jennifer Harmon',
+  'color' : 'olive',
+  'project' : 'Switchable Non-Volatile Encryption',
+  'dob' : '12/23/1958',
+  'job' : 'Engineer, Building Services',
+  'user' : 'jenniferh'
+},
+
+{
+  'city' : 'North Robert, Yukon Territory',
+  'name' : 'Ricky Powell',
+  'color' : 'gray',
+  'project' : 'Polarized Disintermediate Intranet',
+  'dob' : '12/22/1937',
+  'job' : 'Surveyor, Quantity',
+  'user' : 'rickyp'
+},
+
+{
+  'city' : 'Dianaview, New Brunswick',
+  'name' : 'Justin Jordan',
+  'color' : 'navy',
+  'project' : 'Triple-Buffered Responsive Challenge',
+  'dob' : '09/18/1943',
+  'job' : 'Hotel Manager',
+  'user' : 'justinj'
+},
+
+{
+  'city' : 'Lake Karen, Ontario',
+  'name' : 'Zachary Schultz',
+  'color' : 'navy',
+  'project' : 'Ameliorated Content-Based Info-Mediaries',
+  'dob' : '09/23/1995',
+  'job' : 'Company Secretary',
+  'user' : 'zacharys'
+},
+
+{
+  'city' : 'Jameschester, New Brunswick',
+  'name' : 'Charles Perry',
+  'color' : 'navy',
+  'project' : 'Adaptive Optimizing Product',
+  'dob' : '03/12/1945',
+  'job' : 'Outdoor Activities/Education Manager',
+  'user' : 'charlesp'
+},
+
+{
+  'city' : 'Holmestown, New Brunswick',
+  'name' : 'Ronald Thompson',
+  'color' : 'fuchsia',
+  'project' : 'Self-Enabling Multi-Tasking Website',
+  'dob' : '06/09/1978',
+  'job' : 'Higher Education Careers Adviser',
+  'user' : 'ronaldt'
+},
+
+{
+  'city' : 'Jenniferport, Quebec',
+  'name' : 'Stephanie Vance',
+  'color' : 'blue',
+  'project' : 'Reduced Holistic Database',
+  'dob' : '10/04/1954',
+  'job' : 'Surveyor, Minerals',
+  'user' : 'stephaniev'
+},
+
+{
+  'city' : 'Courtneyburgh, British Columbia',
+  'name' : 'Dana Cannon',
+  'color' : 'olive',
+  'project' : 'Fully-Configurable Interactive Budgetary Management',
+  'dob' : '09/02/1953',
+  'job' : 'Doctor, General Practice',
+  'user' : 'danac'
+},
+
+{
+  'city' : 'West Amybury, Manitoba',
+  'name' : 'Heather Mccarthy',
+  'color' : 'teal',
+  'project' : 'Persevering Neutral Standardization',
+  'dob' : '01/03/1990',
+  'job' : 'Systems Analyst',
+  'user' : 'heatherm'
+},
+
+{
+  'city' : 'Lake Melissa, Yukon Territory',
+  'name' : 'Omar Smith',
+  'color' : 'teal',
+  'project' : 'Optimized Methodical Conglomeration',
+  'dob' : '11/12/1952',
+  'job' : 'Psychologist, Prison And Probation Services',
+  'user' : 'omars'
+},
+
+{
+  'city' : 'New Richard, Manitoba',
+  'name' : 'Ryan Johnson',
+  'color' : 'lime',
+  'project' : 'Pre-Emptive 3Rdgeneration Functionalities',
+  'dob' : '04/28/1976',
+  'job' : 'Cartographer',
+  'user' : 'ryanj'
+},
+
+{
+  'city' : 'South Brentbury, Manitoba',
+  'name' : 'Anthony Day',
+  'color' : 'olive',
+  'project' : 'Implemented Optimizing Service-Desk',
+  'dob' : '02/06/1955',
+  'job' : 'Public Relations Officer',
+  'user' : 'anthonyd'
+},
+
+{
+  'city' : 'Zoeborough, Ontario',
+  'name' : 'Christopher Smith',
+  'color' : 'yellow',
+  'project' : 'Reverse-Engineered Value-Added Complexity',
+  'dob' : '05/02/1939',
+  'job' : 'Optometrist',
+  'user' : 'christophers'
+},
+
+{
+  'city' : 'Anneberg, Ontario',
+  'name' : 'Elijah Martinez',
+  'color' : 'yellow',
+  'project' : 'Phased Optimizing Array',
+  'dob' : '08/28/1993',
+  'job' : 'Civil Service Fast Streamer',
+  'user' : 'elijahm'
+},
+
+{
+  'city' : 'West Ericashire, Northwest Territories',
+  'name' : 'Tami Rodriguez',
+  'color' : 'gray',
+  'project' : 'Quality-Focused Modular Artificial Intelligence',
+  'dob' : '06/23/1990',
+  'job' : 'Art Gallery Manager',
+  'user' : 'tamir'
+},
+
+{
+  'city' : 'Port Kimberlyborough, Northwest Territories',
+  'name' : 'Melissa Burke',
+  'color' : 'purple',
+  'project' : 'Future-Proofed Static Secured Line',
+  'dob' : '02/14/1945',
+  'job' : 'Interpreter',
+  'user' : 'melissab'
+},
+
+{
+  'city' : 'Zimmermanview, Prince Edward Island',
+  'name' : 'Susan Reid',
+  'color' : 'white',
+  'project' : 'Self-Enabling Interactive Infrastructure',
+  'dob' : '07/26/1967',
+  'job' : 'Dispensing Optician',
+  'user' : 'susanr'
+},
+
+{
+  'city' : 'Rivaston, Saskatchewan',
+  'name' : 'Jessica Adams',
+  'color' : 'navy',
+  'project' : 'Polarized Exuding Adapter',
+  'dob' : '10/24/1995',
+  'job' : 'Horticultural Consultant',
+  'user' : 'jessicaa'
+},
+
+{
+  'city' : 'Petersonhaven, Ontario',
+  'name' : 'Hunter Lewis',
+  'color' : 'olive',
+  'project' : 'User-Centric Asymmetric Paradigm',
+  'dob' : '03/03/1971',
+  'job' : 'Accounting Technician',
+  'user' : 'hunterl'
+},
+
+{
+  'city' : 'Travisfort, British Columbia',
+  'name' : 'Katherine Vaughn',
+  'color' : 'navy',
+  'project' : 'Front-Line Logistical Info-Mediaries',
+  'dob' : '01/18/1974',
+  'job' : 'Podiatrist',
+  'user' : 'katherinev'
+},
+
+{
+  'city' : 'New Joseph, New Brunswick',
+  'name' : 'Ronald Reese',
+  'color' : 'maroon',
+  'project' : 'Cross-Group Interactive Process Improvement',
+  'dob' : '07/15/1950',
+  'job' : 'Community Arts Worker',
+  'user' : 'ronaldr'
+},
+
+{
+  'city' : 'Tiffanyport, New Brunswick',
+  'name' : 'Javier Washington',
+  'color' : 'maroon',
+  'project' : 'Enhanced Client-Server Access',
+  'dob' : '04/08/1974',
+  'job' : 'Community Development Worker',
+  'user' : 'javierw'
+},
+
+{
+  'city' : 'Heidiland, Saskatchewan',
+  'name' : 'Joshua Mccann',
+  'color' : 'lime',
+  'project' : 'Organized Holistic Help-Desk',
+  'dob' : '06/26/1950',
+  'job' : 'Sport And Exercise Psychologist',
+  'user' : 'joshuam'
+},
+
+{
+  'city' : 'Lake Richard, British Columbia',
+  'name' : 'B. G. K.',
+  'color' : 'silver',
+  'project' : 'B7',
+  'dob' : '07/13/1981',
+  'job' : 'Various',
+  'user' : 'bgk'
+},
+
+{
+  'city' : 'Krystalberg, Nova Scotia',
+  'name' : 'David Duran',
+  'color' : 'teal',
+  'project' : 'Synergistic Zero-Defect Encryption',
+  'dob' : '03/05/1980',
+  'job' : 'Health And Safety Adviser',
+  'user' : 'davidd'
+},
+
+{
+  'city' : 'Clarkberg, Ontario',
+  'name' : 'Chelsea Singh',
+  'color' : 'green',
+  'project' : 'Centralized 24Hour Hierarchy',
+  'dob' : '04/29/1978',
+  'job' : 'Clinical Embryologist',
+  'user' : 'chelseas'
+},
+
+{
+  'city' : 'Jacquelineview, Ontario',
+  'name' : 'Kelly Hall',
+  'color' : 'aqua',
+  'project' : 'Pre-Emptive Multi-State Task-Force',
+  'dob' : '11/09/1966',
+  'job' : 'Regulatory Affairs Officer',
+  'user' : 'kellyh'
+},
+
+{
+  'city' : 'Serranoton, Manitoba',
+  'name' : 'Amy Holland',
+  'color' : 'olive',
+  'project' : 'Organic Discrete Attitude',
+  'dob' : '10/10/1984',
+  'job' : 'Psychologist, Sport And Exercise',
+  'user' : 'amyh'
+},
+
+{
+  'city' : 'Troyton, Alberta',
+  'name' : 'Holly Bender',
+  'color' : 'teal',
+  'project' : 'Exclusive Asynchronous Toolset',
+  'dob' : '10/16/1994',
+  'job' : 'Engineer, Control And Instrumentation',
+  'user' : 'hollyb'
+},
+
+{
+  'city' : 'Chambersburgh, Alberta',
+  'name' : 'Barbara Sampson',
+  'color' : 'yellow',
+  'project' : 'Profound Uniform Circuit',
+  'dob' : '09/30/1977',
+  'job' : 'Hospital Doctor',
+  'user' : 'barbaras'
+},
+
+{
+  'city' : 'West Mathewfurt, Saskatchewan',
+  'name' : 'Cynthia Vasquez',
+  'color' : 'olive',
+  'project' : 'Face-To-Face Value-Added Protocol',
+  'dob' : '05/09/1975',
+  'job' : 'Police Officer',
+  'user' : 'cynthiav'
+},
+
+{
+  'city' : 'Port Richard, Nova Scotia',
+  'name' : 'Shawn Edwards',
+  'color' : 'white',
+  'project' : 'Optimized Fresh-Thinking Collaboration',
+  'dob' : '07/19/1962',
+  'job' : 'Paediatric Nurse',
+  'user' : 'shawne'
+},
+
+{
+  'city' : 'Harrismouth, Saskatchewan',
+  'name' : 'Katherine Garrett',
+  'color' : 'teal',
+  'project' : 'Cross-Platform Zero Administration Methodology',
+  'dob' : '03/21/1954',
+  'job' : 'Press Photographer',
+  'user' : 'katherineg'
+},
+
+{
+  'city' : 'Christophershire, Saskatchewan',
+  'name' : 'Eric Pierce',
+  'color' : 'teal',
+  'project' : 'Streamlined Hybrid Paradigm',
+  'dob' : '07/19/1972',
+  'job' : 'Buyer, Retail',
+  'user' : 'ericp'
+},
+
+{
+  'city' : 'Sanchezmouth, Northwest Territories',
+  'name' : 'Gordon Lee',
+  'color' : 'aqua',
+  'project' : 'Synergized Systemic Definition',
+  'dob' : '09/01/1991',
+  'job' : 'Investment Analyst',
+  'user' : 'gordonl'
+},
+
+{
+  'city' : 'Loriburgh, Newfoundland and Labrador',
+  'name' : 'Bryan McDonald',
+  'color' : 'blue',
+  'project' : 'Multi-Tiered Bottom-Line Intranet',
+  'dob' : '05/31/1961',
+  'job' : 'Youth Worker',
+  'user' : 'bryanm'
+},
+
+{
+  'city' : 'West Jacob, Ontario',
+  'name' : 'Deborah Dunn',
+  'color' : 'blue',
+  'project' : 'Robust 5th-Generation Portal',
+  'dob' : '11/25/1985',
+  'job' : 'Dancer',
+  'user' : 'deborahd'
+},
+
+{
+  'city' : 'Lorishire, New Brunswick',
+  'name' : 'Melissa Cooper',
+  'color' : 'black',
+  'project' : 'Persistent Systemic Strategy',
+  'dob' : '11/20/1967',
+  'job' : 'Intelligence Analyst',
+  'user' : 'melissac'
+},
+
+{
+  'city' : 'Robertfurt, Manitoba',
+  'name' : 'Karen Murphy',
+  'color' : 'lime',
+  'project' : 'Fundamental Needs-Based Moderator',
+  'dob' : '11/13/1995',
+  'job' : 'Trade Union Research Officer',
+  'user' : 'karenm'
+},
+
+{
+  'city' : 'West Jennifer, Prince Edward Island',
+  'name' : 'Lynda Taylor',
+  'color' : 'aqua',
+  'project' : 'Business-Focused Modular Synergy',
+  'dob' : '10/09/2005',
+  'job' : 'Advertising Copywriter',
+  'user' : 'lyndat'
+},
+
+{
+  'city' : 'New Moniqueview, Ontario',
+  'name' : 'Melanie Williams',
+  'color' : 'aqua',
+  'project' : 'Secured Discrete Framework',
+  'dob' : '11/05/1947',
+  'job' : 'Air Cabin Crew',
+  'user' : 'melaniew'
+},
+
+{
+  'city' : 'Jacksonton, Saskatchewan',
+  'name' : 'Gemma Armstrong',
+  'color' : 'silver',
+  'project' : 'Universal Bifurcated Hub',
+  'dob' : '03/21/1955',
+  'job' : 'Dealer',
+  'user' : 'gemmaa'
+},
+
+{
+  'city' : 'Santanafurt, Manitoba',
+  'name' : 'Jeremy Potts',
+  'color' : 'teal',
+  'project' : 'Persevering Motivating Hardware',
+  'dob' : '12/14/1954',
+  'job' : 'Engineer, Structural',
+  'user' : 'jeremyp'
+},
+
+{
+  'city' : 'South John, Nunavut',
+  'name' : 'Grace Ryan',
+  'color' : 'blue',
+  'project' : 'Focused Zero Administration Monitoring',
+  'dob' : '08/11/1956',
+  'job' : 'Water Quality Scientist',
+  'user' : 'gracer'
+},
+
+{
+  'city' : 'Brandonstad, New Brunswick',
+  'name' : 'Joanne Vincent',
+  'color' : 'aqua',
+  'project' : 'Secured Mission-Critical Forecast',
+  'dob' : '03/27/1981',
+  'job' : 'Editor, Magazine Features',
+  'user' : 'joannev'
+},
+
+{
+  'city' : 'Donnafort, Nunavut',
+  'name' : 'Angela Davies',
+  'color' : 'aqua',
+  'project' : 'Front-Line Grid-Enabled Leverage',
+  'dob' : '09/30/1987',
+  'job' : 'Operations Geologist',
+  'user' : 'angelad'
+},
+
+{
+  'city' : 'Gregoryland, Nova Scotia',
+  'name' : 'Philip Harris',
+  'color' : 'white',
+  'project' : 'Universal Solution-Oriented Database',
+  'dob' : '01/09/1994',
+  'job' : 'Learning Disability Nurse',
+  'user' : 'philiph'
+},
+
+{
+  'city' : 'Matthewland, Yukon Territory',
+  'name' : 'Glenn Forster',
+  'color' : 'green',
+  'project' : 'Synergistic Object-Oriented Utilization',
+  'dob' : '09/21/2003',
+  'job' : 'Toxicologist',
+  'user' : 'glennf'
+},
+
+{
+  'city' : 'Smithmouth, New Brunswick',
+  'name' : 'Alexandra Owen',
+  'color' : 'gray',
+  'project' : 'Persevering Solution-Oriented Task-Force',
+  'dob' : '04/24/1945',
+  'job' : 'Personnel Officer',
+  'user' : 'alexandrao'
+},
+
+{
+  'city' : 'Hoffmanside, New Brunswick',
+  'name' : 'Mohammed Jennings',
+  'color' : 'black',
+  'project' : 'Triple-Buffered Disintermediate Groupware',
+  'dob' : '06/14/1947',
+  'job' : 'Scientist, Audiological',
+  'user' : 'mohammedj'
+},
+
+{
+  'city' : 'North Paige, British Columbia',
+  'name' : 'Suzanne Gomez',
+  'color' : 'sarcelle',
+  'project' : 'La Liberté De Changer À L'État Pur',
+  'dob' : '06/14/1948',
+  'job' : 'Maroquinier',
+  'user' : 'suzanneg'
+},
+
+{
+  'city' : 'West Stephanie, Alberta',
+  'name' : 'Agathe Garnier',
+  'color' : 'violet',
+  'project' : 'L'Avantage De Rouler Sans Soucis',
+  'dob' : '12/20/1974',
+  'job' : 'Fleuriste',
+  'user' : 'agatheg'
+},
+
+{
+  'city' : 'East David, Quebec',
+  'name' : 'Virginie Guyot',
+  'color' : 'sarcelle',
+  'project' : 'Le Pouvoir De Rouler À Sa Source',
+  'dob' : '07/05/1954',
+  'job' : 'Maraîcher',
+  'user' : 'virginieg'
+},
+
+{
+  'city' : 'Lake Jamieberg, Saskatchewan',
+  'name' : 'Franck Besnard',
+  'color' : 'violet',
+  'project' : 'Le Confort D'Avancer Sans Soucis',
+  'dob' : '09/13/1939',
+  'job' : 'Boulanger',
+  'user' : 'franckb'
+},
+
+{
+  'city' : 'West Granttown, Prince Edward Island',
+  'name' : 'Alexandre Chauvet',
+  'color' : 'bleu',
+  'project' : 'La Possibilité D'Innover Plus Rapidement',
+  'dob' : '03/16/1972',
+  'job' : 'Opticien',
+  'user' : 'alexandrec'
+},
+
+{
+  'city' : 'Camachoport, New Brunswick',
+  'name' : 'Susan Fontaine',
+  'color' : 'blanc',
+  'project' : 'L'Assurance De Louer Autrement',
+  'dob' : '10/22/1999',
+  'job' : 'Animalier De Laboratoire',
+  'user' : 'susanf'
+},
+
+{
+  'city' : 'Cameronburgh, Nunavut',
+  'name' : 'Christophe Andre',
+  'color' : 'argent',
+  'project' : 'L'Art De Changer À La Pointe',
+  'dob' : '09/09/1944',
+  'job' : 'Contrôleur De Performances',
+  'user' : 'christophea'
+},
+
+{
+  'city' : 'Kaylachester, New Brunswick',
+  'name' : 'Josette Martineau',
+  'color' : 'sarcelle',
+  'project' : 'L'Assurance De Changer Plus Rapidement',
+  'dob' : '12/19/1966',
+  'job' : 'Chef De Rayon',
+  'user' : 'josettem'
+},
+
+{
+  'city' : 'Port Carlosfort, British Columbia',
+  'name' : 'Henriette Klein',
+  'color' : 'bordeaux',
+  'project' : 'Le Pouvoir D'Innover Naturellement',
+  'dob' : '05/12/1960',
+  'job' : 'Operateur De Raffinerie',
+  'user' : 'henriettek'
+},
+
+{
+  'city' : 'Karenhaven, Prince Edward Island',
+  'name' : 'François Baron',
+  'color' : 'blanc',
+  'project' : 'Le Pouvoir D'Avancer Sans Soucis',
+  'dob' : '03/12/1953',
+  'job' : 'Ingenieur Recherche Et Développement En Agroalimentaire',
+  'user' : 'françoisb'
+},
+
+{
+  'city' : 'Lake Audrey, Quebec',
+  'name' : 'Martin Brady',
+  'color' : 'fuchsia',
+  'project' : 'Sharable Mission-Critical Model',
+  'dob' : '09/25/1939',
+  'job' : 'Translator',
+  'user' : 'martinb'
+},
+
+{
+  'city' : 'East Jacqueline, Newfoundland and Labrador',
+  'name' : 'Irene Burke',
+  'color' : 'purple',
+  'project' : 'Synergistic Local Graphic Interface',
+  'dob' : '08/05/1947',
+  'job' : 'Accountant, Chartered Certified',
+  'user' : 'ireneb'
+},
+
+{
+  'city' : 'Jasonbury, Newfoundland and Labrador',
+  'name' : 'Barbara Holland',
+  'color' : 'purple',
+  'project' : 'Robust Local Architecture',
+  'dob' : '07/10/1941',
+  'job' : 'Production Designer, Theatre/Television/Film',
+  'user' : 'barbarah'
+},
+
+{
+  'city' : 'Josephfurt, New Brunswick',
+  'name' : 'Nathan Richards',
+  'color' : 'teal',
+  'project' : 'Reverse-Engineered Background Hardware',
+  'dob' : '03/16/1957',
+  'job' : 'Doctor, Hospital',
+  'user' : 'nathanr'
+},
+
+{
+  'city' : 'Brandonbury, Nunavut',
+  'name' : 'Hayley Jones',
+  'color' : 'black',
+  'project' : 'Down-Sized Bi-Directional Database',
+  'dob' : '04/04/1960',
+  'job' : 'Emergency Planning/Management Officer',
+  'user' : 'hayleyj'
+},
+
+{
+  'city' : 'West Janeport, Quebec',
+  'name' : 'Ahmet Schafer',
+  'color' : 'fuchsia',
+  'project' : 'Synergistic 5Thgeneration Access',
+  'dob' : '08/01/2000',
+  'job' : 'Armed Forces Technical Officer',
+  'user' : 'ahmets'
+},
+
+{
+  'city' : 'Jennabury, British Columbia',
+  'name' : 'Meryem Meyer',
+  'color' : 'black',
+  'project' : 'Self-Enabling Mobile Service-Desk',
+  'dob' : '06/28/2000',
+  'job' : 'Engineer, Electrical',
+  'user' : 'meryemm'
+},
+
+{
+  'city' : 'New Alexandriabury, Newfoundland and Labrador',
+  'name' : 'Diedrich Staude',
+  'color' : 'purple',
+  'project' : 'De-Engineered Impactful Array',
+  'dob' : '08/15/1972',
+  'job' : 'Engineer, Maintenance (It)',
+  'user' : 'diedrichs'
+},
+
+{
+  'city' : 'Lorifort, New Brunswick',
+  'name' : 'Rena Hofmann',
+  'color' : 'green',
+  'project' : 'Phased Radical Monitoring',
+  'dob' : '12/28/1949',
+  'job' : 'Community Pharmacist',
+  'user' : 'renah'
+},
+
+{
+  'city' : 'Wolfview, Saskatchewan',
+  'name' : 'Kathleen Krein',
+  'color' : 'blue',
+  'project' : 'Pre-Emptive Systemic Migration',
+  'dob' : '03/18/1948',
+  'job' : 'Occupational Hygienist',
+  'user' : 'kathleenk'
+},
+
+{
+  'city' : 'East Brian, Nova Scotia',
+  'name' : 'Cemal Keudel',
+  'color' : 'olive',
+  'project' : 'Balanced Stable Approach',
+  'dob' : '09/18/1996',
+  'job' : 'Herbalist',
+  'user' : 'cemalk'
+},
+
+{
+  'city' : 'Stevenmouth, Quebec',
+  'name' : 'Aaron Chan',
+  'color' : 'aqua',
+  'project' : 'Self-Enabling Multimedia Firmware',
+  'dob' : '04/16/1970',
+  'job' : 'Student',
+  'user' : 'aaronc'
+},
+
+{
+  'city' : 'Port Matthewchester, Nova Scotia',
+  'name' : 'Sandra Tan',
+  'color' : 'green',
+  'project' : 'Mandatory Grid-Enabled Interface',
+  'dob' : '09/27/1948',
+  'job' : 'Herbalist',
+  'user' : 'sandrat'
+},
+
+{
+  'city' : 'West Carla, Quebec',
+  'name' : 'Jennifer Lee',
+  'color' : 'silver',
+  'project' : 'Compatible National Emulation',
+  'dob' : '02/28/1987',
+  'job' : 'Instructor',
+  'user' : 'jenniferl'
+},
+
+{
+  'city' : 'Cookstad, British Columbia',
+  'name' : 'Sigmund Chang',
+  'color' : 'purple',
+  'project' : 'Quality-Focused Fault-Tolerant Matrices',
+  'dob' : '09/24/2001',
+  'job' : 'Tradesman',
+  'user' : 'schang'
+},
+
+{
+  'city' : 'Lifurt, Quebec',
+  'name' : 'Lily Wang',
+  'color' : 'yellow',
+  'project' : 'Open-Source Multimedia Hardware',
+  'dob' : '07/20/1962',
+  'job' : 'Nurse',
+  'user' : 'lilyw'
+},
+
+{
+  'city' : 'Port Tomberg, British Columbia',
+  'name' : 'Tong Ren',
+  'color' : 'maroon',
+  'project' : 'Configurable Real-Time Service-Desk',
+  'dob' : '01/14/1998',
+  'job' : 'Community Organizer',
+  'user' : 'tren'
+},
+
+{
+  'city' : 'Andersonbury, Manitoba',
+  'name' : 'Hsiang-Mei Chu',
+  'color' : 'fuchsia',
+  'project' : 'Self-Enabling Clear-Thinking Help-Desk',
+  'dob' : '11/19/1965',
+  'job' : 'Professor',
+  'user' : 'hsiangmeic'
+},
+
+{
+  'city' : 'East Kaitlyn, New Brunswick',
+  'name' : 'Yongmei Ma',
+  'color' : 'blue',
+  'project' : 'Self-Enabling Holistic Service-Desk',
+  'dob' : '12/17/1962',
+  'job' : 'Driver',
+  'user' : 'yongmeim'
+},
+
+{
+  'city' : 'East Patrick, Nova Scotia',
+  'name' : 'Michael Chan',
+  'color' : 'white',
+  'project' : 'Self-Enabling Bi-Directional Database',
+  'dob' : '07/18/1981',
+  'job' : 'Counselor',
+  'user' : 'michaelc'
+},
+
+{
+  'city' : 'Lake Melissaburgh, Prince Edward Island',
+  'name' : 'Melissa Chen',
+  'color' : 'olive',
+  'project' : 'Customizable Grid-Enabled Throughput',
+  'dob' : '01/16/1953',
+  'job' : 'President',
+  'user' : 'melissac'
+},
+
+{
+  'city' : 'North Wayneberg, Yukon Territory',
+  'name' : 'Li Bai',
+  'color' : 'purple',
+  'project' : 'Upgradable Stable Moderator',
+  'dob' : '10/05/1991',
+  'job' : 'writer',
+  'user' : 'lib'
+},
+
+{
+  'city' : 'Hortonland, Ontario',
+  'name' : 'Rei Shiong Xu',
+  'color' : 'teal',
+  'project' : 'Centralized Dedicated Service-Desk',
+  'dob' : '04/07/1975',
+  'job' : 'Retail',
+  'user' : 'reishiongx'
+},
+
+{
+  'city' : 'West Kevintown, Northwest Territories',
+  'name' : 'Tan Li',
+  'color' : 'yellow',
+  'project' : 'Cross-Group Transitional Matrix',
+  'dob' : '01/24/1939',
+  'job' : 'Teacher',
+  'user' : 'tanl'
+},
+
+{
+  'city' : 'South Christinaberg, Northwest Territories',
+  'name' : 'Mei Zhang',
+  'color' : 'silver',
+  'project' : 'Virtual Actuating Interface',
+  'dob' : '06/11/1972',
+  'job' : 'Technical Officer',
+  'user' : 'meiz'
+},
+
+{
+  'city' : 'South Cynthia, Yukon Territory',
+  'name' : 'Vera Palumbo',
+  'color' : 'navy',
+  'project' : 'Progetto Fondamentale Non-Volatile',
+  'dob' : '09/01/1980',
+  'job' : 'Administrator',
+  'user' : 'verap'
+},
+
+{
+  'city' : 'North Amy, Quebec',
+  'name' : 'Fortunata Caputo',
+  'color' : 'green',
+  'project' : 'Implementazione Progressiva Modulare',
+  'dob' : '02/16/1993',
+  'job' : 'Radiographer, Diagnostic',
+  'user' : 'fortunatac'
+},
+
+{
+  'city' : 'West Bradley, Manitoba',
+  'name' : 'Cleros Bernardi',
+  'color' : 'black',
+  'project' : 'Set Di Istruzioni Visionaria Locale',
+  'dob' : '03/04/1955',
+  'job' : 'Television Floor Manager',
+  'user' : 'clerosb'
+},
+
+{
+  'city' : 'Lake Michelle, Newfoundland and Labrador',
+  'name' : 'Erminia Moretti',
+  'color' : 'maroon',
+  'project' : 'Successo Ricontestualizzata Stabile',
+  'dob' : '03/28/1964',
+  'job' : 'Event Organiser',
+  'user' : 'erminiam'
+},
+
+{
+  'city' : 'Port April, Quebec',
+  'name' : 'Sue ellen Valentini',
+  'color' : 'gray',
+  'project' : 'Middleware Condivisibile Locale',
+  'dob' : '10/15/1959',
+  'job' : 'Artist',
+  'user' : 'sue ellenv'
+},
+
+{
+  'city' : 'New Ronald, Ontario',
+  'name' : 'Domingo Grassi',
+  'color' : 'purple',
+  'project' : 'Strategia Orizzontale Valore Aggiunto',
+  'dob' : '08/13/1956',
+  'job' : 'Aid Worker',
+  'user' : 'domingog'
+},
+
+{
+  'city' : 'New Michaelfort, Ontario',
+  'name' : 'Tina Gould',
+  'color' : 'white',
+  'project' : 'Phased Reciprocal Algorithm',
+  'dob' : '07/08/1942',
+  'job' : 'Chartered Public Finance Accountant',
+  'user' : 'tinag'
+},
+
+{
+  'city' : 'South Cassie, Ontario',
+  'name' : 'Kimberly Diaz',
+  'color' : 'white',
+  'project' : 'Right-Sized Local Internet Solution',
+  'dob' : '01/04/1965',
+  'job' : 'Exhibition Designer',
+  'user' : 'kimberlyd'
+},
+
+{
+  'city' : 'Lake Victorbury, Nova Scotia',
+  'name' : 'Debra Wright',
+  'color' : 'navy',
+  'project' : 'Monitored Zero Tolerance Emulation',
+  'dob' : '04/07/2000',
+  'job' : 'Designer, Textile',
+  'user' : 'debraw'
+},
+
+{
+  'city' : 'Hayesside, New Brunswick',
+  'name' : 'Travis Martinez',
+  'color' : 'maroon',
+  'project' : 'Switchable Eco-Centric Forecast',
+  'dob' : '05/12/1942',
+  'job' : 'Physicist, Medical',
+  'user' : 'travism'
+},
+
+{
+  'city' : 'Josephside, Nunavut',
+  'name' : 'Amber Vance',
+  'color' : 'yellow',
+  'project' : 'Cross-Platform Cohesive Budgetary Management',
+  'dob' : '09/10/1991',
+  'job' : 'Investment Banker, Corporate',
+  'user' : 'amberv'
+},
+
+{
+  'city' : 'Lake Andrea, Nunavut',
+  'name' : 'Ambika Barvadekar'
+  'color' : 'maroon',
+  'project' : 'Vision-Oriented Non-Volatile Interface',
+  'dob' : '04/01/1990',
+  'job' : 'Engineer, Automotive',
+  'user' : 'ambikab'
+},
+
+{
+  'city' : 'Dayview, Ontario',
+  'name' : 'Sita Sinha',
+  'color' : 'purple',
+  'project' : 'Seamless Motivating Circuit',
+  'dob' : '08/27/2003',
+  'job' : 'Sports Therapist',
+  'user' : 'sitas'
+},
+
+{
+  'city' : 'North Ericville, Newfoundland and Labrador',
+  'name' : 'Bhairavi Gupta',
+  'color' : 'gray',
+  'project' : 'User-Centric Tertiary Software',
+  'dob' : '12/27/1954',
+  'job' : 'Engineer, Technical Sales',
+  'user' : 'bhairavig'
+},
+
+{
+  'city' : 'West Amandaport, Manitoba',
+  'name' : 'Jaya Nambisan',
+  'color' : 'white',
+  'project' : 'Profound Non-Volatile Matrix',
+  'dob' : '03/28/1995',
+  'job' : 'Chief Operating Officer',
+  'user' : 'Jaya Nambisan'
+},
+
+{
+  'city' : 'North Darlenemouth, Ontario',
+  'name' : 'Karnavati Kaseri',
+  'color' : 'yellow',
+  'project' : 'Proactive Hybrid Migration',
+  'dob' : '08/23/1957',
+  'job' : 'Gaffer',
+  'user' : 'karnavatik'
+},
+
+{
+  'city' : 'Cohenburgh, British Columbia',
+  'name' : 'Anil Valimbe',
+  'color' : 'black',
+  'project' : 'Multi-Tiered Cohesive Methodology',
+  'dob' : '03/15/1959',
+  'job' : 'Graphic Designer',
+  'user' : 'anilv'
+},
+
+{
+  'city' : 'Hesterland, Northwest Territories',
+  'name' : 'Vinod Kayal',
+  'color' : 'blue',
+  'project' : 'Multi-Lateral Didactic Customer Loyalty',
+  'dob' : '07/12/1944',
+  'job' : 'Engineer, Civil (Contracting)',
+  'user' : 'vinodk'
+},
+
+{
+  'city' : 'Johnhaven, Manitoba',
+  'name' : 'Amish Panja',
+  'color' : 'olive',
+  'project' : 'Fully-Configurable Real-Time Initiative',
+  'dob' : '12/12/1972',
+  'job' : 'Media Planner',
+  'user' : 'amishp'
+},
+
+{
+  'city' : 'Port Williamshire, New Brunswick',
+  'name' : 'Madhadvi Ravind'
+  'color' : 'purple',
+  'project' : 'Networked Tangible Monitoring',
+  'dob' : '12/11/1969',
+  'job' : 'Ambulance Person',
+  'user' : 'madhavir'
+},
+
+{
+  'city' : 'Port Jessica, Prince Edward Island',
+  'name' : 'यPeter Singh',
+  'color' : 'purple',
+  'project' : 'Organized Coherent Knowledge User',
+  'dob' : '12/12/1942',
+  'job' : 'Fisheries Officer',
+  'user' : 'peters'
+},
+
+{
+  'city' : 'Port Erin, British Columbia',
+  'name' : 'Tarek Kurdi',
+  'color' : 'white',
+  'project' : 'Secured Encompassing Task-Force',
+  'dob' : '04/14/1989',
+  'job' : 'Financial Trader',
+  'user' : 'tarekk'
+},
+
+{
+  'city' : 'Brandonland, Newfoundland and Labrador',
+  'name' : 'Timor Olegshov',
+  'color' : 'lime',
+  'project' : 'Phased Incremental Flexibility',
+  'dob' : '08/20/1979',
+  'job' : 'Manager',
+  'user' : 'timoro'
+},
+
+{
+  'city' : 'Kevinborough, Quebec',
+  'name' : 'Soraya Vatanakh',
+  'color' : 'lime',
+  'project' : 'Focused Secondary Framework',
+  'dob' : '10/07/1983',
+  'job' : 'Student',
+  'user' : 'sorayav'
+},
+
+{
+  'city' : 'Swansonchester, Alberta',
+  'name' : 'Ahmed Omari',
+  'color' : 'lime',
+  'project' : 'Seamless Reciprocal Leverage',
+  'dob' : '01/01/1987',
+  'job' : 'Engineer',
+  'user' : 'amhedo'
+},
+
+{
+  'city' : 'Christinefort, Manitoba',
+  'name' : 'Elena Gemen',
+  'color' : 'gray',
+  'project' : 'User-Centric Background Access',
+  'dob' : '04/12/1959',
+  'job' : 'Advertising Account Planner',
+  'user' : 'elenag'
+},
+
+{
+  'city' : 'Lake Samantha, Saskatchewan',
+  'name' : 'James de Gruil',
+  'color' : 'yellow',
+  'project' : 'Customer-Focused Cohesive Firmware',
+  'dob' : '12/23/1982',
+  'job' : 'Arboriculturist',
+  'user' : 'jamesd'
+},
+
+{
+  'city' : 'Port Matthewborough, Prince Edward Island',
+  'name' : 'Anna Kuijpers',
+  'color' : 'gray',
+  'project' : 'Quality-Focused Mission-Critical Collaboration',
+  'dob' : '09/16/1954',
+  'job' : 'Operational Investment Banker',
+  'user' : 'annak'
+},
+
+{
+  'city' : 'Evansburgh, Manitoba',
+  'name' : 'Jozef Albin',
+  'color' : 'gray',
+  'project' : 'Future-Proofed User-Facing Project',
+  'dob' : '07/16/1956',
+  'job' : 'Intendent',
+  'user' : 'jozefa'
+},
+
+{
+  'city' : 'Port Loretta, Yukon Territory',
+  'name' : 'Wojciech Sarniak',
+  'color' : 'fuchsia',
+  'project' : 'Face-To-Face Non-Volatile Forecast',
+  'dob' : '01/11/1968',
+  'job' : 'Hycel',
+  'user' : 'wojciechs'
+},
+
+{
+  'city' : 'South Sarahchester, British Columbia',
+  'name' : 'Marcin Janc',
+  'color' : 'silver',
+  'project' : 'Ergonomic Multi-Tasking Internet Solution',
+  'dob' : '04/29/1981',
+  'job' : 'Oceanonauta',
+  'user' : 'marcinj'
+},
+
+{
+  'city' : 'Craigmouth, Alberta',
+  'name' : 'Francisco Javier Gilabert',
+  'color' : 'blue',
+  'project' : 'Intuitive User-Facing Structure',
+  'dob' : '05/31/1970',
+  'job' : 'Tefl Teacher',
+  'user' : 'francisco javierg'
+},
+
+{
+  'city' : 'New Rebecca, British Columbia',
+  'name' : 'Andres Vicens',
+  'color' : 'blue',
+  'project' : 'Re-Contextualized User-Facing Support',
+  'dob' : '11/07/1949',
+  'job' : 'Lecturer, Further Education',
+  'user' : 'andresv'
+},
+
+{
+  'city' : 'Osbornbury, New Brunswick',
+  'name' : 'Fatima Buendia',
+  'color' : 'white',
+  'project' : 'Up-Sized System-Worthy Ability',
+  'dob' : '07/26/1976',
+  'job' : 'Tourism Officer',
+  'user' : 'fatimab'
+},
+
+{
+  'city' : 'Port Amy, New Brunswick',
+  'name' : 'Fernando Vinas',
+  'color' : 'white',
+  'project' : 'Multi-Lateral Coherent Array',
+  'dob' : '12/29/1948',
+  'job' : 'Set Designer',
+  'user' : 'fernandov'
+},
+
+{
+  'city' : 'Lake Krystalmouth, Prince Edward Island',
+  'name' : 'Luis Miguel Cerezo',
+  'color' : 'green',
+  'project' : 'Total Solution-Oriented Instruction Set',
+  'dob' : '11/05/1943',
+  'job' : 'Social Researcher',
+  'user' : 'luis miguelc'
+},
+
+{
+  'city' : 'West Johnberg, New Brunswick',
+  'name' : 'Belen Cabanas',
+  'color' : 'yellow',
+  'project' : 'Front-Line Object-Oriented Access',
+  'dob' : '05/25/1982',
+  'job' : 'Therapist, Nutritional',
+  'user' : 'belenc'
+},
+
+{
+  'city' : 'West Richardport, Saskatchewan',
+  'name' : 'Montserrat Aparicio',
+  'color' : 'gray',
+  'project' : 'Cross-Group Uniform Encoding',
+  'dob' : '09/28/1979',
+  'job' : 'Engineer, Biomedical',
+  'user' : 'montserrata'
+},
+
+{
+  'city' : 'Lake Catherinebury, Nova Scotia',
+  'name' : 'Marek Narodotskya',
+  'color' : 'lime',
+  'project' : 'Programmable Context-Sensitive Customer Loyalty',
+  'dob' : '04/08/1989',
+  'job' : 'Chef',
+  'user' : 'marekn'
+},
+
+{
+  'city' : 'New Christian, Nova Scotia',
+  'name' : 'Soraia Antunes',
+  'color' : 'black',
+  'project' : 'Object-Based Local Capability',
+  'dob' : '04/04/1960',
+  'job' : 'Licensed Conveyancer',
+  'user' : 'soraiaa'
+},
+
+{
+  'city' : 'New Christopherport, Quebec',
+  'name' : 'Leonardo Baptista',
+  'color' : 'teal',
+  'project' : 'Multi-Channeled 6Thgeneration Implementation',
+  'dob' : '10/25/1992',
+  'job' : 'IT Consultant',
+  'user' : 'leonardob'
+}
+
+]
+

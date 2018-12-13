@@ -45,7 +45,7 @@ for p in people:
       n = random.randint(1,3)
       author = random.choice(people)['user']
       comm = "[{}] {}".format(author, fake.sentence(nb_words=n)) 
-      reqs.append((user, { 'comment' : comm }))
+      reqs.append((user, { 'comment' : [ comm ] }))
 
 # Extra commments for bgk, replace period with exclamation points.
 for _ in xrange(200):
@@ -53,7 +53,7 @@ for _ in xrange(200):
   author = random.choice(people)['user']
   comm = "[{}] {}".format(author, fake.sentence(nb_words=n))[:-1]
   comm += random.choice(["!", "!", "!", "!!", "!!!", " <3", "?!", "."])
-  reqs.append((user, { 'comment' : comm }))
+  reqs.append(('bgk', { 'comment' : [ comm ] }))
 
 # For us, data will live with code lol.
 random.shuffle(reqs)

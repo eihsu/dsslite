@@ -246,7 +246,7 @@ def test_system():
 
   lb = LoadBalancer([w1,w2,w3])
   sim = Simulation(lb, sim_speed=0)
-  sim.run(script=test_script, traffic_rate=1.0)
+  sim.run(script=test_script, rate=1.0)
 
   # (coupled testing to db instead of mocks)
   assert db1.lookup("nannak") == { "dob": "1954-12-08" }
@@ -280,7 +280,7 @@ def test_system():
   assert stats['mean_wait'] == pytest.approx(47.67, 0.01)
 
   # Test sim reset and traffic rate, plus stats again.
-  sim.run(script=test_script, traffic_rate = 2.0)
+  sim.run(script=test_script, rate = 2.0)
   stats = sim.generate_stats()
   assert stats['sim_time'] == 250
   assert stats['tps'] == pytest.approx(44.33, 0.01)
@@ -292,7 +292,7 @@ def test_system():
   assert stats['mean_wait'] == pytest.approx(50.00, 0.01)
 
   # Test sim reproducability
-  sim.run(script=test_script, traffic_rate = 1.0)
+  sim.run(script=test_script, rate = 1.0)
   stats = sim.generate_stats()
   assert stats['sim_time'] == 450
   assert stats['tps'] == pytest.approx(21.95, 0.01)
@@ -313,7 +313,7 @@ def test_worker_concurrency():
   sim = Simulation(w, sim_speed=0)
   with pytest.raises(RuntimeError) as e:
     sim.run(script=test_script * max,
-            traffic_rate=1000000)  # basically no time between requests
+            rate=1000000)  # basically no time between requests
 
   # STARTHERE make request(s) go straight onto idle worker,
   # versus a bunch that make it busy and use its queue, check
